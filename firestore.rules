@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Explicitly allow reads and writes for known application collections
+    match /dresses/{id} {
+      allow read, write: if true;
+    }
+    match /clients/{id} {
+      allow read, write: if true;
+    }
+    match /bookings/{id} {
+      allow read, write: if true;
+    }
+    match /jewelry/{id} {
+      allow read, write: if true;
+    }
+    match /expenses/{id} {
+      allow read, write: if true;
+    }
+    match /withdrawals/{id} {
+      allow read, write: if true;
+    }
+    match /notifications/{id} {
+      allow read, write: if true;
+    }
+    match /checklists/{id} {
+      allow read, write: if true;
+    }
+    match /signatures/{id} {
+      allow read, write: if true;
+    }
+
+    // Default deny catch-all for any other pathways
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

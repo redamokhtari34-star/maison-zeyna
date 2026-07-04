@@ -1,0 +1,112 @@
+{
+  "collections": {
+    "dresses": {
+      "description": "Collection for dresses inventory",
+      "fields": {
+        "id": "string",
+        "number": "string",
+        "name": "string",
+        "type": "string",
+        "size": "string",
+        "color": "string",
+        "rentalPrice": "number",
+        "deposit": "number",
+        "status": "string",
+        "imageUrl": "string",
+        "notes": "string (optional)"
+      }
+    },
+    "clients": {
+      "description": "Collection for clients information",
+      "fields": {
+        "id": "string",
+        "name": "string",
+        "phone": "string",
+        "city": "string",
+        "notes": "string (optional)",
+        "createdAt": "string",
+        "weddingDate": "string (optional)"
+      }
+    },
+    "bookings": {
+      "description": "Collection for bookings/contracts",
+      "fields": {
+        "id": "string",
+        "dressId": "string",
+        "clientName": "string",
+        "clientPhone": "string",
+        "clientCity": "string",
+        "startDate": "string",
+        "endDate": "string",
+        "fittingDate": "string (optional)",
+        "weddingDate": "string (optional)",
+        "totalPrice": "number",
+        "depositPaid": "number",
+        "paymentStatus": "string",
+        "status": "string",
+        "notes": "string (optional)",
+        "payments": "array of objects",
+        "jewelryId": "string (optional)"
+      }
+    },
+    "jewelry": {
+      "description": "Collection for jewelry accessories catalog",
+      "fields": {
+        "id": "string",
+        "number": "string",
+        "name": "string",
+        "type": "string",
+        "color": "string",
+        "rentalPrice": "number",
+        "deposit": "number",
+        "status": "string",
+        "imageUrl": "string",
+        "notes": "string (optional)"
+      }
+    },
+    "expenses": {
+      "description": "Collection for shop expenses logs",
+      "fields": {
+        "id": "string",
+        "description": "string",
+        "amount": "number",
+        "category": "string",
+        "date": "string"
+      }
+    },
+    "withdrawals": {
+      "description": "Collection for cash withdrawals logs",
+      "fields": {
+        "id": "string",
+        "amount": "number",
+        "date": "string",
+        "notes": "string (optional)"
+      }
+    },
+    "notifications": {
+      "description": "Collection for system activity alerts",
+      "fields": {
+        "id": "string",
+        "message": "string",
+        "type": "string",
+        "timestamp": "string"
+      }
+    },
+    "checklists": {
+      "description": "Collection for contract checklist items state per booking",
+      "fields": {
+        "bookingId": "string",
+        "items": "map"
+      }
+    },
+    "signatures": {
+      "description": "Collection for digital signatures per booking",
+      "fields": {
+        "bookingId": "string",
+        "signed": "boolean",
+        "date": "string",
+        "name": "string"
+      }
+    }
+  }
+}
