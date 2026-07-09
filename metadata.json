@@ -1,8 +1,6 @@
 {
   "name": "Maison Zeyna",
-  "description": "Application de gestion de catalogue de robes, calendrier de réservations et suivi des clientes pour les boutiques de location en Algérie.",
+  "description": "Application de gestion complète pour Maison Zeyna, boutique de location de robes et de bijoux.",
   "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

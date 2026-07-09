@@ -1,96 +1,89 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-export type DressType = 
-  | 'Karakou' 
-  | 'Caftan' 
-  | 'Chedda' 
-  | 'Robe Kabyle' 
-  | 'Robe Chaouie' 
-  | 'Blousa Oranaise' 
-  | 'Robe de Mariée' 
-  | 'Autre';
-
-export type DressStatus = 'Disponible' | 'Louée' | 'En Nettoyage' | 'Hors Service';
-
-export interface Dress {
+export interface Article {
   id: string;
-  number: string; // Numéro unique de la robe (e.g. "01", "02", "REF-101")
   name: string;
-  type: DressType;
-  size: string; // e.g., "38", "40", "42", "M", "L"
+  reference: string;
+  category: 'robe' | 'bijou';
   color: string;
-  rentalPrice: number; // in DA (Algerian Dinar)
-  deposit: number; // caution, in DA
-  status: DressStatus;
-  imageUrl: string;
-  notes?: string;
+  size: string;
+  rental_price: number;
+  deposit: number;
+  state: 'excellent' | 'tres_bon' | 'bon' | 'use';
+  status: 'disponible' | 'loue';
+  image_url: string;
+  notes: string;
+  created_at: string;
 }
 
-export interface Client {
+export interface Rental {
   id: string;
-  name: string;
-  phone: string;
-  city: string; // e.g., "Alger", "Oran", "Constantine", "Tizi Ouzou"
-  notes?: string;
-  createdAt: string;
-  weddingDate?: string; // Date de l'événement / Mariage
+  client_name: string;
+  client_phone: string;
+  client_instagram?: string;
+  client_address?: string;
+  dress_id?: string; // ID of the rented dress
+  jewelry_id?: string; // ID of the rented jewelry
+  dress_ids?: string[]; // IDs of rented dresses
+  jewelry_ids?: string[]; // IDs of rented jewelries
+  out_date: string; // YYYY-MM-DD
+  event_date: string; // YYYY-MM-DD
+  return_date: string; // YYYY-MM-DD
+  price: number;
+  deposit_paid: number; // Acompte
+  remaining_to_pay: number; // Reste à payer
+  payment_method: string; // especes, carte, virement, chèque, etc.
+  notes: string;
+  is_returned: boolean;
+  returned_at?: string;
+  created_at: string;
 }
 
-export type PaymentStatus = 'Payé' | 'Acompte Versé' | 'Non Payé';
-export type BookingStatus = 'Confirmé' | 'Récupéré' | 'Retourné' | 'Annulé';
-
-export interface PaymentTransaction {
+export interface CashTransaction {
+  id: string;
+  type: 'entree' | 'sortie';
   amount: number;
+  person: string;
   date: string; // YYYY-MM-DD
-  type: 'Acompte' | 'Solde' | 'Régularisation';
-}
-
-export interface Booking {
-  id: string;
-  dressId: string; // links to Dress
-  clientName: string;
-  clientPhone: string;
-  clientCity: string;
-  startDate: string; // YYYY-MM-DD
-  endDate: string; // YYYY-MM-DD
-  fittingDate?: string; // date d'essayage, optional YYYY-MM-DD
-  weddingDate?: string; // Date du mariage / événement
-  totalPrice: number; // DA
-  depositPaid: number; // DA
-  paymentStatus: PaymentStatus;
-  status: BookingStatus;
-  notes?: string;
-  payments?: PaymentTransaction[];
-  jewelryId?: string; // Optionnel : Bijou associé à la location
-}
-
-export interface Jewelry {
-  id: string;
-  number: string; // Référence unique, ex: "B-01"
-  name: string;
-  type: 'Parure' | 'Diadème' | 'Collier' | 'Bracelet' | 'Boucles d\'oreilles' | 'Ceinture' | 'Autre';
-  color: string;
-  rentalPrice: number; // DA
-  deposit: number; // caution, DA
-  status: 'Disponible' | 'Loué' | 'En Nettoyage' | 'Hors Service';
-  imageUrl: string;
-  notes?: string;
+  time: string; // HH:MM
+  reason: string;
+  created_at: string;
 }
 
 export interface Expense {
   id: string;
+  amount: number;
+  category: string;
   description: string;
-  amount: number; // DA
-  category: 'Achat de stock' | 'Facture d\'électricité' | 'Fournitures' | 'Salaire' | 'Loyer' | 'Autre';
   date: string; // YYYY-MM-DD
+  person: string;
+  receipt_url?: string;
+  payment_source?: 'caisse' | 'tresorerie';
+  created_at: string;
 }
 
-export interface CashWithdrawal {
+export interface Settings {
   id: string;
-  amount: number; // DA
-  date: string; // YYYY-MM-DD
-  notes?: string;
+  categories: string[];
+  logo_url: string;
+  store_name: string;
+}
+
+export interface DashboardStats {
+  revenueToday: number;
+  revenueMonth: number;
+  activeRentalsCount: number;
+  returnsTodayCount: number;
+  outingsTodayCount: number;
+  expensesMonth: number;
+  currentCashInRegister: number;
+  treasuryBalance: number;
+}
+
+export interface AlertData {
+  id: string;
+  type: 'outing_today' | 'return_today' | 'late_return' | 'remaining_payment' | 'tomorrow_booking';
+  title: string;
+  description: string;
+  severity: 'info' | 'warning' | 'error' | 'success';
+  date: string;
+  rentalId?: string;
 }

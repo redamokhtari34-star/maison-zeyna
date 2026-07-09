@@ -1,107 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", Georgia, serif;
+  --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-
-  /* Custom Navy colors */
-  --color-navy-50: #f4f7fb;
-  --color-navy-100: #e7eff7;
-  --color-navy-200: #cbdef0;
-  --color-navy-300: #9ec2e3;
-  --color-navy-400: #699ed2;
-  --color-navy-500: #4680bf;
-  --color-navy-600: #3365a3;
-  --color-navy-700: #2a5286;
-  --color-navy-800: #264670;
-  --color-navy-900: #1d3350;
-  --color-navy-950: #0b1a30;
-
-  /* Custom Gold colors */
-  --color-gold-50: #fefdf5;
-  --color-gold-100: #fcf8db;
-  --color-gold-200: #faf1b4;
-  --color-gold-300: #f5e47c;
-  --color-gold-400: #edd143;
-  --color-gold-500: #cca52c;
-  --color-gold-600: #ad8220;
-  --color-gold-700: #895e1c;
-  --color-gold-800: #6e4b1a;
-  --color-gold-900: #5c3e1a;
-  --color-gold-950: #35210b;
-
-  /* Luxury Animations */
-  --animate-spin-slow: spin 8s linear infinite;
-  --animate-fade-in: fadeIn 0.2s ease-out;
-  --animate-slide-left: slideLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes slideLeft {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-  }
+  
+  --color-gold-50: #fefcf3;
+  --color-gold-100: #fcf6db;
+  --color-gold-200: #f7eca8;
+  --color-gold-300: #efdc6f;
+  --color-gold-400: #e4c43d;
+  --color-gold-500: #d4af37; /* Zeyna Gold */
+  --color-gold-600: #b8912b;
+  --color-gold-700: #936e22;
+  --color-gold-800: #745420;
+  --color-gold-900: #60451f;
 }
 
-@media print {
-  /* Hide every part of the site */
-  body * {
-    visibility: hidden;
-  }
-  
-  /* Show only the receipt modal and its children */
-  .print-receipt-modal, .print-receipt-modal * {
-    visibility: visible;
-  }
-  
-  /* Reset the overlay background and absolute position */
-  .print-overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: transparent !important;
-    backdrop-filter: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
+body {
+  font-family: var(--font-sans);
+  background-color: #fafafa;
+  color: #171717;
+}
 
-  .print-receipt-modal {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    width: 100%;
-    max-width: 650px;
-    background: #ffffff !important;
-    color: #1c1917 !important;
-    border: 1px solid #e7e5e4 !important;
-    box-shadow: none !important;
-    padding: 24px !important;
-    border-radius: 12px !important;
-  }
-
-  /* Black and white overrides for printing */
-  .print-receipt-modal h4, 
-  .print-receipt-modal h5, 
-  .print-receipt-modal p, 
-  .print-receipt-modal span, 
-  .print-receipt-modal div {
-    color: #1c1917 !important;
-  }
-
-  .print-receipt-modal .border-b,
-  .print-receipt-modal .border-t,
-  .print-receipt-modal .border {
-    border-color: #d6d3d1 !important;
-  }
-
-  .print-receipt-modal .bg-navy-950,
-  .print-receipt-modal .bg-navy-900 {
-    background-color: #f5f5f4 !important;
-    border-color: #e7e5e4 !important;
-  }
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8912b;
 }
